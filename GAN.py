@@ -36,3 +36,8 @@ z_dim = 64
 img_dim = 784  # 28x28x1
 batch_size = 32
 num_epochs = 50
+
+# Networks and fixed noise
+disc = Discriminator(img_dim).to(device)
+gen = Generator(z_dim, img_dim).to(device)
+fixed_noise = torch.randn((batch_size, z_dim)).to(device)

@@ -28,3 +28,11 @@ class Generator(nn.Module):
 
     def forward(self, x):
         return self.gen(x)
+
+# Hyperparameters
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+lr = 3e-4
+z_dim = 64
+img_dim = 784  # 28x28x1
+batch_size = 32
+num_epochs = 50

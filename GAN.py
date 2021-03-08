@@ -1,7 +1,15 @@
 import torch
 import torch.nn as nn
+import torchvision
+import torchvision.datasets as datasets
+from torch.utils.data import DataLoader
 from torchvision.transforms import transforms
 from torch.utils.tensorboard import SummaryWriter
+
+from six.moves import urllib
+opener = urllib.request.build_opener()
+opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+urllib.request.install_opener(opener)
 
 
 class Discriminator(nn.Module):
@@ -48,3 +56,7 @@ transforms = transforms.Compose(
     [transforms.ToTensor(),
      transforms.Normalize((0.5,), (0.5,))]
 )
+
+# Dataset and Dataloader
+dataset = datasets.MNIST(root='./data', transform=transforms, download=True)
+loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)

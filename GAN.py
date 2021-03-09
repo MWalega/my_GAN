@@ -66,3 +66,8 @@ loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
 opt_disc = optim.Adam(disc.parameters(), lr=lr)
 opt_gen = optim.Adam(gen.parameters(), lr=lr)
 criterion = nn.BCELoss()
+
+# Tensorboard
+writer_fake = SummaryWriter(f"runs/GAN_MNIST_fake")
+writer_real = SummaryWriter(f"runs/GAN_MNIST/real")
+step = 0

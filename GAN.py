@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.optim as optim
 import torchvision
 import torchvision.datasets as datasets
 from torch.utils.data import DataLoader
@@ -60,3 +61,8 @@ transforms = transforms.Compose(
 # Dataset and Dataloader
 dataset = datasets.MNIST(root='./data', transform=transforms, download=True)
 loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
+
+# Optimizers and Criterion
+opt_disc = optim.Adam(disc.parameters(), lr=lr)
+opt_gen = optim.Adam(gen.parameters(), lr=lr)
+criterion = nn.BCELoss()
